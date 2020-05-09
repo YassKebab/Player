@@ -36,8 +36,10 @@ class Game
 
     /**
      * @ORM\ManyToOne(targetEntity=Player::class, inversedBy="games")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $player;
+
 
     public function __construct()
     {
