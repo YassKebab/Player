@@ -8,7 +8,7 @@
 
     class PlayerController extends AbstractController{
         /**
-         * @Route("/")
+         * @Route("/index", name="game")
          */
         public function index(){
             //return new Response('<html><body>Hello</body></html>');
