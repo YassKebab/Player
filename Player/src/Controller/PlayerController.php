@@ -11,7 +11,7 @@
          * @Route("/index", name="game")
          */
         public function index(){
-            //return new Response('<html><body>Hello</body></html>');
-            return $this->render('player/index.html.twig', array('name' => 'Bard'));
+
+            return $this->render('player/index.html.twig');
         }
     }

@@ -55,8 +55,8 @@ class RegisterController extends AbstractController
                 ->to($data['email'])
                 //->priority(Email::PRIORITY_HIGH)
                 ->subject('Registration complete')
-                ->text('Sending emails is fun again!')
-                ->html('<p>See Twig integration for better HTML integration!</p>');
+                ->text('Congrats on your registration with us !')
+                ->html('');
 
             $mailer->send($email);
 
