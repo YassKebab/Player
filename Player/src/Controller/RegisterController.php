@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -17,8 +19,9 @@ class RegisterController extends AbstractController
 {
     /**
      * @Route("/register", name="register")
+     * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, MailerInterface $mailer)
     {
         $form = $this->createFormBuilder()
             ->add('username')
@@ -46,6 +49,16 @@ class RegisterController extends AbstractController
             $player->setPassword(
                 $passwordEncoder->encodePassword($player, $data['password'])
             );
+
+            $email = (new Email())
+                ->from('contact@player.com')
+                ->to($data['email'])
+                //->priority(Email::PRIORITY_HIGH)
+                ->subject('Registration complete')
+                ->text('Sending emails is fun again!')
+                ->html('<p>See Twig integration for better HTML integration!</p>');
+
+            $mailer->send($email);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($player);
