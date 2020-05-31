@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="/">Player</a>
+        <a class="navbar-brand" href="{{ path('game') }}">Player</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -8,14 +8,14 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Game <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{path('game')}}">Game</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" href="{{path('profile')}}">Profile</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Déconnexion</button>
+            <form class="form-inline my-2 my-lg-0" style="border: 1px black;">
+                <input type="button" name="lien1" value="Log out" class="btn btn-secondary my-2 my-sm-0" onclick="self.location.href='{{ path('app_logout') }}'" ></button>
             </form>
         </div>
     </div>

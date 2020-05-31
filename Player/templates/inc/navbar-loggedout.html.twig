@@ -4,11 +4,8 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <form class="form-inline my-2 my-lg-0">git stash
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Connexion</button>
-            </form>
-        </div>
+        <form class="form-inline my-2 my-lg-0">
+            <input type="button" name="lien1" value="Sign up" class="btn btn-secondary my-2 my-sm-0" onclick="self.location.href='{{ path('register') }}'" ></button>
+        </form>
     </div>
 </nav>

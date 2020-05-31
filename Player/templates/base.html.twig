@@ -7,7 +7,11 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {{ include('inc/navbar-loggedin.html.twig') }}
+        {% if app.user %}
+            {{ include('inc/navbar-loggedin.html.twig') }}
+        {% else %}
+            {{ include('inc/navbar-loggedout.html.twig') }}
+        {% endif %}
         <div class="container">
             {% block body %}{% endblock %}
         </div>
