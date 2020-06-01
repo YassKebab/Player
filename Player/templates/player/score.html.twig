@@ -1,0 +1,11 @@
+{% extends'base.html.twig' %}
+
+{% block title %}Player{% endblock %}
+
+{% block body %}
+<h1 style="text-align: center;" >Player</h1>
+    <div style="text-align: center; position:relative;">
+        Score : {{ game.score }} <br>
+        <a href="{{ path('game') }}" >New game</a>
+    </div>
+{% endblock %}

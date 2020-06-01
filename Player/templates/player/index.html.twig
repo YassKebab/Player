@@ -5,7 +5,7 @@
 {% block body %}
 <h1 style="text-align: center;" >Player</h1>
     <div style="text-align: center; position:relative;">
-        {% if game.score is not null %}
+        {% if game.getMusicsSelected()|length != 0 %}
             <a href="{{ path('play') }}" >Game already started, would you like to resume it ?</a>
         {% else %}
             <a href="{{ path('play') }}" >New game</a>

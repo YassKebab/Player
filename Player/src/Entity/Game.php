@@ -133,7 +133,7 @@ class Game
         return unserialize($this->Musics_Selected);
     }
 
-    public function setMusicsSelected(?string $Musics_Selected): self
+    public function setMusicsSelected(array $Musics_Selected): self
     {
         $this->Musics_Selected = serialize($Musics_Selected);
 
@@ -145,7 +145,7 @@ class Game
         return unserialize($this->Musics_Right_Answer);
     }
 
-    public function setMusicsRightAnswer(?string $Musics_Right_Answer): self
+    public function setMusicsRightAnswer(array $Musics_Right_Answer): self
     {
         $this->Musics_Right_Answer = serialize($Musics_Right_Answer);
 
