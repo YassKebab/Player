@@ -47,4 +47,27 @@ class MusicRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function countAllMusic()
+    {
+        $qb =  $this->createQueryBuilder('music');
+        return $qb->select($qb->expr()->count('music.id'))
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function findAllExpectOne(int $id)
+    {
+        $qb =  $this->createQueryBuilder('m')
+            ->where('m.id != :id')
+            ->setParameter('id', $id);
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
 }

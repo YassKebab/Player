@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Game
 {
+    const nbMaxStep = 10;
+    const nbMaxError = 3;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -25,7 +27,7 @@ class Game
     private $date;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $score;
 
@@ -40,9 +42,22 @@ class Game
      */
     private $player;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Musics_Selected;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Musics_Right_Answer;
+
 
     public function __construct()
     {
+        $this->Musics_Selected = serialize([]);
+        $this->Musics_Right_Answer = serialize([]);
+
         $this->musics = new ArrayCollection();
     }
 
@@ -109,6 +124,30 @@ class Game
     public function setPlayer(?Player $player): self
     {
         $this->player = $player;
+
+        return $this;
+    }
+
+    public function getMusicsSelected(): ?array
+    {
+        return unserialize($this->Musics_Selected);
+    }
+
+    public function setMusicsSelected(?string $Musics_Selected): self
+    {
+        $this->Musics_Selected = serialize($Musics_Selected);
+
+        return $this;
+    }
+
+    public function getMusicsRightAnswer(): ?array
+    {
+        return unserialize($this->Musics_Right_Answer);
+    }
+
+    public function setMusicsRightAnswer(?string $Musics_Right_Answer): self
+    {
+        $this->Musics_Right_Answer = serialize($Musics_Right_Answer);
 
         return $this;
     }

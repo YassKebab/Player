@@ -1,0 +1,16 @@
+{% extends'base.html.twig' %}
+
+{% block title %}Player{% endblock %}
+
+{% block body %}
+<h1 style="text-align: center;" >Player</h1>
+    <div style="text-align: center; position:relative; overflow: hidden; height: 100vh">
+        <iframe type="text/html" width="640" height="100" style="position: relative; top: -60px;"
+                src=""
+                frameborder="0"></iframe>
+        <br>
+        {{ form(form) }}
+
+        <h1 style="margin-top: 50px">STEP {{ step }}/10</h1>
+    </div>
+{% endblock %}

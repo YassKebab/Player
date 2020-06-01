@@ -3,24 +3,12 @@
 {% block title %}Player{% endblock %}
 
 {% block body %}
-<h1>Page de jeu</h1>
-    <div style="width: 640px;
-            height: 50px;
-            text-align: center;
-            background-color: #2B3E50;
-            position: absolute;">
+<h1 style="text-align: center;" >Player</h1>
+    <div style="text-align: center; position:relative;">
+        {% if game.score is not null %}
+            <a href="{{ path('play') }}" >Game already started, would you like to resume it ?</a>
+        {% else %}
+            <a href="{{ path('play') }}" >New game</a>
+        {% endif %}
     </div>
-    <div style="text-align: center;">
-
-        <iframe type="text/html" width="640" height="100"
-                src="http://www.youtube.com/embed/k43TrhN8Yt4?autoplay=1&origin=https://www.youtube.com/watch?v=k43TrhN8Yt4"
-                frameborder="0"></iframe>
-    </div>
-
-    <button>Option 1</button>
-    <button>Option 2</button>
-    <button>Option 3</button>
-    <button>Option 4</button>
-
-
 {% endblock %}

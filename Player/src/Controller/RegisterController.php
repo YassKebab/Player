@@ -56,7 +56,7 @@ class RegisterController extends AbstractController
                 //->priority(Email::PRIORITY_HIGH)
                 ->subject('Registration complete')
                 ->text('Congrats on your registration with us !')
-                ->html('');
+                ->html('Congrats on your registration with us !');
 
             $mailer->send($email);
 
