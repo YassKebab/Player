@@ -71,7 +71,7 @@ class GameController extends AbstractController
         /*On cherche l'etape à laquelle on est */
         $musicSelected = $game->getMusicsSelected();
         $step = count($musicSelected);
-        var_dump($step);
+
         if (Request::METHOD_POST === $request->getMethod()) {
             $olderSelectedMusic = $game->getMusicsSelected();
             $olderSelectedMusic[] = $request->get('form')[ 'selectedAnswer' ];
