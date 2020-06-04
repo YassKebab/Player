@@ -16,8 +16,12 @@
         <tbody>
         {% for game in games %}
             <tr>
-                <td>{{ game.date|date("m/d/Y h:m:s") }}</td>
-                <td>{{ game.score }}</td>
+                <td>{{ game.date|date("m/d/Y h:m:s", "Europe/Paris") }}</td>
+                {% if game.score is not null %}
+                    <td>{{ game.score }}</td>
+                {% else %}
+                    <td><a href="{{ path('play') }}" >Game not over yet !</a></td>
+                {% endif %}
                 <td>
                     <div class="btn btn-danger" onclick="deleteGame('{{ path('delete', {id:game.id}) }}')">Delete</div>
                 </td>

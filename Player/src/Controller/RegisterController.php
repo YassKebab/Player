@@ -40,7 +40,7 @@ class RegisterController extends AbstractController
             ->getForm();
 
         $form->handleRequest($request);
-        if($form->isSubmitted()){
+        if($form->isSubmitted() && $form->isValid()){
             $data = $form->getData();
 
             $player = new Player();

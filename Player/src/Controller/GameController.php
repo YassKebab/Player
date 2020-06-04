@@ -61,10 +61,12 @@ class GameController extends AbstractController
         $gameRepository = $this->getDoctrine()->getRepository(Game::class);
         $musicRepository = $this->getDoctrine()->getRepository(Music::class);
 
+        //Vérification de la présence d'une partie
         if ($gameRepository->findOneBy(['player' => $this->getUser(), 'score' => null]) == null) {
             $this->redirectToRoute('game');
         }
 
+        //Récupération de la partie en cours
         /** @var Game $game */
         $game = $gameRepository->findOneBy(['player' => $this->getUser(), 'score' => null]);
 
@@ -72,8 +74,10 @@ class GameController extends AbstractController
         $musicSelected = $game->getMusicsSelected();
         $step = count($musicSelected);
 
+        //Quand le user soumet le formulaire d'une question du jeu
         if (Request::METHOD_POST === $request->getMethod()) {
             $olderSelectedMusic = $game->getMusicsSelected();
+            //Récupération de la valeur donnée par le formulaire
             $olderSelectedMusic[] = $request->get('form')[ 'selectedAnswer' ];
             $game->setMusicsSelected($olderSelectedMusic);
 
@@ -82,11 +86,13 @@ class GameController extends AbstractController
             $em->flush();
             if($step < Game::nbMaxStep-1) {
                 return $this->redirect($this->generateUrl('play'));
-            } else {
-                return $this->redirect($this->generateUrl('finalscore'));
             }
+
+            return $this->redirect($this->generateUrl('finalscore'));
+
         }
 
+        //Construction des possible réponses
         $possibleAnswers = [];
         $nbMusic = $musicRepository->countAllMusic();
 
